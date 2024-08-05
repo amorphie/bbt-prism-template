@@ -271,7 +271,7 @@ tempkey.jwk
 switcher.json
 
 appsettings.secrets.json
-appsettings.Development.json
+# appsettings.Development.json
 deploy/nuget-api-key.txt
 deploy/npm-auth-token.txt
 deploy/ssh-password.txt
@@ -281,4 +281,4 @@ deploy/_run_all_log.txt
 
 # MyProjectName
 /src/BBT.MyProjectName.HttpApi.Host/Logs/*
-/src/BBT.MyProjectName.HttpApi.Host/appsettings.Development.json
+# /src/BBT.MyProjectName.HttpApi.Host/appsettings.Development.json
