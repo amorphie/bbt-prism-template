@@ -11,6 +11,7 @@ public class Issue : AuditedAggregateRoot<Guid>
     public Guid RepositoryId { get; private set; }
     public string Title { get; private set; }
     public string? Text { get; set; }
+    public string[]? Tags { get; set; }
     public bool IsLocked { get; private set; }
     public bool IsClosed { get; private set; }
     public IssueCloseReason? CloseReason { get; private set; }

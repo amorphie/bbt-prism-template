@@ -10,25 +10,25 @@ namespace BBT.MyProjectName.Issues;
 public class IssueAppService(
     IServiceProvider serviceProvider,
     IIssueRepository issueRepository,
-    IUnitOfWork unitOfWork) 
+    IUnitOfWork unitOfWork)
     : ApplicationService(serviceProvider), IIssueAppService
 {
-    
     public async Task<IssueDto> GetAsync(Guid id, CancellationToken cancellationToken = default)
     {
         var issue = await issueRepository.GetAsync(id, true, cancellationToken);
         return ObjectMapper.Map<Issue, IssueDto>(issue);
     }
 
-    public async Task<IssueDto> CreateAsync(Guid repositoryId, CreateIssueInput input, CancellationToken cancellationToken = default)
+    public async Task<IssueDto> CreateAsync(Guid repositoryId, CreateIssueInput input,
+        CancellationToken cancellationToken = default)
     {
         var issue = new Issue(
             GuidGenerator.Create(),
             repositoryId,
             input.Title,
             input.Text
-        );
-        
+        ) { Tags = input.Tags };
+
         Logger.LogInformation("Issue has been created. {IssueId}", issue.Id);
 
         await issueRepository.InsertAsync(issue, cancellationToken);
@@ -36,11 +36,13 @@ public class IssueAppService(
         return ObjectMapper.Map<Issue, IssueDto>(issue);
     }
 
-    public async Task<IssueDto> UpdateAsync(Guid id, UpdateIssueInput input, CancellationToken cancellationToken = default)
+    public async Task<IssueDto> UpdateAsync(Guid id, UpdateIssueInput input,
+        CancellationToken cancellationToken = default)
     {
         var issue = await issueRepository.GetAsync(id, true, cancellationToken);
         issue.SetTitle(input.Title);
         issue.Text = input.Text;
+        issue.Tags = input.Tags;
         await issueRepository.UpdateAsync(issue, cancellationToken);
         await unitOfWork.SaveChangesAsync(cancellationToken);
         return ObjectMapper.Map<Issue, IssueDto>(issue);
@@ -68,7 +70,8 @@ public class IssueAppService(
         await unitOfWork.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task AddCommentAsync(Guid id, AddIssueCommentInput input, CancellationToken cancellationToken = default)
+    public async Task AddCommentAsync(Guid id, AddIssueCommentInput input,
+        CancellationToken cancellationToken = default)
     {
         var issue = await issueRepository.GetAsync(id, true, cancellationToken);
         issue.AddComment(input.Text, Guid.NewGuid());

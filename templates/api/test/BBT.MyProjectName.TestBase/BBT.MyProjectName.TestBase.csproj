@@ -9,6 +9,7 @@
     <PackageReference Include="BBT.Prism.Data.Seeding" Version="$(PrismPackageVersion)" />
     <PackageReference Include="BBT.Prism.TestBase" Version="$(PrismPackageVersion)" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(TestSdkPackageVersion)" />
+    <PackageReference Include="Moq" Version="$(MoqPackageVersion)"/>
     <PackageReference Include="NSubstitute" Version="$(NSubstitutePackageVersion)" />
     <PackageReference Include="NSubstitute.Analyzers.CSharp" Version="$(NSubstituteAnalyzersPackageVersion)">
       <PrivateAssets>all</PrivateAssets>
@@ -18,5 +19,6 @@
     <PackageReference Include="xunit" Version="$(xunitPackageVersion)" />
     <PackageReference Include="xunit.extensibility.execution" Version="$(xunitPackageVersion)" />
     <PackageReference Include="xunit.runner.visualstudio" Version="$(xunitRunnerPackageVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.Middleware" Version="$(MicrosoftPackageVersion)"/>
   </ItemGroup>
 </Project>

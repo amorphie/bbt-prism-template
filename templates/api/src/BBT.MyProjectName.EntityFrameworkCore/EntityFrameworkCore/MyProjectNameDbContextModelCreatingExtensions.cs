@@ -29,6 +29,8 @@ public static class MyProjectNameDbContextModelCreatingExtensions
 
             b.Property(p => p.Title).IsRequired().HasMaxLength(IssueConsts.MaxTitleLength);
             b.Property(p => p.Text).HasMaxLength(IssueConsts.MaxTextLength);
+            b.Property(p => p.Tags)
+                .HasColumnType("text[]");
 
             b.HasMany(p => p.Comments)
                 .WithOne()
@@ -62,7 +64,7 @@ public static class MyProjectNameDbContextModelCreatingExtensions
             // b.Property(p => p.Id).ValueGeneratedNever();
 
             b.Property(p => p.Text).IsRequired().HasMaxLength(CommentConsts.MaxTextLength);
-            
+
             b.HasOne<Issue>()
                 .WithMany(p => p.Comments)
                 .HasForeignKey(p => p.IssueId);

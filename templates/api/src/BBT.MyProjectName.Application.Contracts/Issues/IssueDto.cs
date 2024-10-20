@@ -15,4 +15,5 @@ public class IssueDto : AuditedEntityDto<Guid>, IHasConcurrencyStamp
     public Guid? AssignedUserId { get; set; }
     public DateTime? LastCommentTime { get; set; }
     public string ConcurrencyStamp { get; set; }
+    public string[]? Tags { get; set; }
 }

@@ -21,6 +21,7 @@
         "DAPR_GRPC_PORT": "42011",
         "DAPR_SECRET_STORE_NAME": "myprojectname-secretstore",
         "DAPR_STATE_STORE_NAME": "myprojectname-cache",
+        "DAPR_PLACEMENT_HOST": "localhost:50006",
         "OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:4317",
         "OTEL_SERVICE_NAME": "myprojectname"
       }
@@ -36,6 +37,7 @@
         "DAPR_GRPC_PORT": "42011",
         "DAPR_SECRET_STORE_NAME": "myprojectname-secretstore",
         "DAPR_STATE_STORE_NAME": "myprojectname-cache",
+        "DAPR_PLACEMENT_HOST": "localhost:50006",
         "OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:4317",
         "OTEL_SERVICE_NAME": "myprojectname"
       }
@@ -49,6 +51,7 @@
         "DAPR_GRPC_PORT": "42011",
         "DAPR_SECRET_STORE_NAME": "myprojectname-secretstore",
         "DAPR_STATE_STORE_NAME": "myprojectname-cache",
+        "DAPR_PLACEMENT_HOST": "localhost:50006",
         "OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:4317",
         "OTEL_SERVICE_NAME": "myprojectname"
       }

@@ -2,7 +2,7 @@
     <PropertyGroup>
 
         <!-- All Prism packages -->
-        <PrismPackageVersion>1.1.4</PrismPackageVersion>
+        <PrismPackageVersion>1.1.5-rc.3</PrismPackageVersion>
         <!-- OpenTelemetry packages -->
         <OpenTelemetryPackageVersion>1.8.1</OpenTelemetryPackageVersion>
         <!-- Elastic Apm packages -->
@@ -25,5 +25,6 @@
         <ShouldlyPackageVersion>4.2.1</ShouldlyPackageVersion>
         <xunitPackageVersion>2.6.1</xunitPackageVersion>
         <xunitRunnerPackageVersion>2.5.3</xunitRunnerPackageVersion>
+        <MoqPackageVersion>2.5.3</MoqPackageVersion>
     </PropertyGroup>
 </Project>

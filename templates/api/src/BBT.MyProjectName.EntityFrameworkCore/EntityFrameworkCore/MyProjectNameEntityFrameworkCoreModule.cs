@@ -1,3 +1,4 @@
+using System;
 using BBT.MyProjectName.Data;
 using BBT.MyProjectName.Issues;
 using BBT.Prism.EntityFrameworkCore;
@@ -12,6 +13,11 @@ namespace BBT.MyProjectName.EntityFrameworkCore;
 )]
 public class MyProjectNameEntityFrameworkCoreModule : PrismModule
 {
+    public override void PreConfigureServices(ModuleConfigurationContext context)
+    {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
+    
     public override void ConfigureServices(ModuleConfigurationContext context)
     {
         var configuration = context.Services.GetConfiguration();

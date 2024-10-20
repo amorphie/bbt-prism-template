@@ -9,4 +9,6 @@ public class UpdateIssueInput
     public string Title { get; set; }
     [MaxLength(IssueConsts.MaxTextLength)]
     public string? Text { get; set; }
+
+    public string[] Tags { get; set; }
 }

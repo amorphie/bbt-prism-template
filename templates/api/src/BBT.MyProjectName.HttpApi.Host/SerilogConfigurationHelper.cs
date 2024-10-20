@@ -13,9 +13,14 @@ public static class SerilogConfigurationHelper
             .AddJsonFile("appsettings.json")
             .AddEnvironmentVariables()
             .Build();
-
+        
+        var debugMode = false;
+        #region DEBUG
+        debugMode = true;
+        #endregion
+        
         var builder = new SerilogConfigurationBuilder(applicationName, configuration)
-            .AddDefaultConfiguration();
+            .AddDefaultConfiguration(debugMode);
 
         // Enable Open Telemetry
         builder.AddOpenTelemetry();

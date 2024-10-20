@@ -19,6 +19,7 @@
             "appPort": 4200,
             "httpPort": 42010,
             "grpcPort": 42011,
+            "placementHostAddress": "localhost:50006",
             "label": "dapr-debug-myprojectname",
             "type": "dapr",
             "dependsOn": "build-myprojectname",

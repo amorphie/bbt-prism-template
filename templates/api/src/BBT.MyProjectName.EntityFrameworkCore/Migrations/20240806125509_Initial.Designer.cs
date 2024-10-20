@@ -13,7 +13,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BBT.MyProjectName.Migrations
 {
     [DbContext(typeof(MyProjectNameDbContext))]
-    [Migration("20240718201231_Initial")]
+    [Migration("20240806125509_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -33,7 +33,7 @@ namespace BBT.MyProjectName.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("CreatedAt");
 
                     b.Property<Guid>("IssueId")
@@ -95,7 +95,7 @@ namespace BBT.MyProjectName.Migrations
                         .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("CreatedAt");
 
                     b.Property<Guid?>("CreatedBy")
@@ -111,10 +111,10 @@ namespace BBT.MyProjectName.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime?>("LastCommentTime")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("ModifiedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("ModifiedAt");
 
                     b.Property<Guid?>("ModifiedBy")
@@ -127,6 +127,9 @@ namespace BBT.MyProjectName.Migrations
 
                     b.Property<Guid>("RepositoryId")
                         .HasColumnType("uuid");
+
+                    b.Property<string[]>("Tags")
+                        .HasColumnType("text[]");
 
                     b.Property<string>("Text")
                         .HasMaxLength(1500)

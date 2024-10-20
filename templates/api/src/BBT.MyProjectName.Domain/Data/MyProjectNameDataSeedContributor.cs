@@ -29,16 +29,16 @@ public class MyProjectNameDataSeedContributor(
             await unitOfWork.SaveChangesAsync();
         }
 
-        if (!await issueRepository.AnyAsync())
-        {
-            var issue = new Issue(
-                guidGenerator.Create(),
-                repository.Id,
-                "Cli solution renamer",
-                "Cli solution does not change the project name in renamer.");
-
-            await issueRepository.InsertAsync(issue);
-            await unitOfWork.SaveChangesAsync();
-        }
+        // if (!await issueRepository.AnyAsync())
+        // {
+        //     var issue = new Issue(
+        //         guidGenerator.Create(),
+        //         repository.Id,
+        //         "Cli solution renamer",
+        //         "Cli solution does not change the project name in renamer.");
+        //
+        //     await issueRepository.InsertAsync(issue);
+        //     await unitOfWork.SaveChangesAsync();
+        // }
     }
 }

@@ -1,8 +1,9 @@
 using BBT.Prism;
 using BBT.Prism.Data.Seeding;
 using BBT.Prism.Modularity;
-using BBT.Prism.Threading;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Moq;
 
 namespace BBT.MyProjectName;
 
@@ -14,22 +15,25 @@ public class MyProjectNameTestBaseModule: PrismModule
 {
     public override void ConfigureServices(ModuleConfigurationContext context)
     {
-        context.Services.AddTransient<MyProjectNameTestDataSeedContributor>();
+        context.Services.AddSingleton<TestData>();
+        RegisterHttpContextAccessor(context.Services);
     }
 
-    public override void OnApplicationInitialization(ApplicationInitializationContext context)
+    private void RegisterHttpContextAccessor(IServiceCollection services)
     {
-        SeedTestData(context);
-    }
-    
-    private static void SeedTestData(ApplicationInitializationContext context)
-    {
-        AsyncHelper.RunSync(async () =>
+        var httpContextAccessorMock = new Mock<IHttpContextAccessor>();
+        var httpContextMock = new Mock<HttpContext>();
+        var requestMock = new Mock<HttpRequest>();
+        var headers = new HeaderDictionary
         {
-            using var scope = context.ServiceProvider.CreateScope();
-            await scope.ServiceProvider
-                .GetRequiredService<IDataSeeder>()
-                .SeedAsync(new DataSeedContext());
-        });
+            { "client_id", "test_1" },
+            { "user_reference", "11111111111" },
+            { "card_number", "1122334455667788" },
+        };
+
+        requestMock.Setup(r => r.Headers).Returns(headers);
+        httpContextMock.Setup(h => h.Request).Returns(requestMock.Object);
+        httpContextAccessorMock.Setup(h => h.HttpContext).Returns(httpContextMock.Object);
+        services.AddSingleton(httpContextAccessorMock.Object);
     }
 }

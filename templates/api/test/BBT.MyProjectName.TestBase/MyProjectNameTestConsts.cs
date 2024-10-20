@@ -2,5 +2,5 @@ namespace BBT.MyProjectName;
 
 public static class MyProjectNameTestConsts
 {
-    public const string CollectionDefinitionName = "MyProjectName collection";
+    public const string CollectionDefinitionName = "MyProjectName_Collection";
 }
